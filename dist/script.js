@@ -48,3 +48,15 @@ document.querySelectorAll('.lang-button').forEach((button) => {
 let savedLanguage = 'es';
 try { savedLanguage = localStorage.getItem('habla-espanol-language') || 'es'; } catch (_) {}
 setLanguage(savedLanguage === 'en' ? 'en' : 'es');
+
+const introVideo = document.querySelector('.video-frame video');
+if (introVideo && 'IntersectionObserver' in window) {
+  const videoObserver = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+      if (!introVideo.ended) introVideo.play().catch(() => {});
+    } else {
+      introVideo.pause();
+    }
+  }, { threshold: [0, 0.45] });
+  videoObserver.observe(introVideo);
+}
