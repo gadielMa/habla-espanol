@@ -12,6 +12,16 @@ python3 -m http.server 8000 --directory dist
 
 Abre `http://localhost:8000`.
 
+## GitHub Pages
+
+La versión pública en [hablar-espanol.com](https://hablar-espanol.com/) se sirve desde la raíz del repositorio. `index.html` se genera a partir de `dist/index.html` con:
+
+```bash
+node scripts/sync-github-pages.mjs
+```
+
+Ejecuta ese comando después de cambiar el HTML de `dist`. Los estilos, el JavaScript, la imagen y el video siguen en `dist`.
+
 ## Archivos principales
 
 - `dist/index.html`: contenido y estructura.
